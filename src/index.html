@@ -13,11 +13,19 @@
       <p>Calling API to get my vacation plan: <b id="name">...</b></p>
     </main>
 
-    <script>
+    <!-- <script>
       (async function () {
         const { text } = await (
           await fetch(`/api/readfile?filename=vacation.txt`)
         ).json();
+        document.querySelector("#name").textContent = text;
+      })();
+    </script> -->
+
+    <script>
+      (async function () {
+        const response = await fetch("/api/readfile?filename=vacation.txt");
+        const text = await response.text();
         document.querySelector("#name").textContent = text;
       })();
     </script>
